@@ -1,0 +1,117 @@
+.partners {
+  background-color: var(--color-mint);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+  margin: 4rem 0;
+}
+
+.partners-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.slider-container {
+  width: 90%;
+  max-width: 1200px;
+  overflow: hidden;
+  position: relative;
+
+  /* Gradient masks on left and right edges to create blur/fade effect */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.partners-logos {
+  display: flex;
+  gap: 2.5rem;
+  animation: slide 20s linear infinite;
+  will-change: transform;
+}
+
+.partners-logos.reverse {
+  animation-direction: reverse;
+}
+
+.slider-container:hover .partners-logos {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.partner-logo img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .partner-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .partners-logos {
+    gap: 1.5rem;
+  }
+
+  .partners-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .partners-logos {
+    gap: 1rem;
+  }
+
+  .partners-title {
+    font-size: 1.2rem;
+  }
+}
