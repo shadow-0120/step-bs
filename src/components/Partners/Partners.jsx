@@ -34,7 +34,7 @@ export default function Partners() {
   return (
     <section className="partners" id="partners">
       <h2 className="partners-title">Our Partners</h2>
-      <div className="slider-container">
+      < className="slider-container">
         <div className={`partners-logos ${scrollDirection === 'up' ? 'reverse' : ''}`}>
           {repeatedLogos.map((logo, index) => (
             <div className="partner-logo" key={index}>
@@ -42,7 +42,7 @@ export default function Partners() {
             </div>
           ))}
         </div>
-      </div>
+      <div/>
     </section>
   );
 }
