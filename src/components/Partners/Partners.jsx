@@ -1,18 +1,16 @@
+// src/components/Partners/Partners.jsx
 import React, { useState, useEffect } from 'react';
 import './partner.css';
 
-const partners = [
-  'partner-1.png',
-  'partner-2.png',
-  'partner-3.png',
-  'paratner-4.png',  // fixed typo
-  'partner-1.png',
-  'partner-2.png',
-  'partner-3.png',
-];
+import partner1 from '../../assets/partner-1.png';
+import partner2 from '../../assets/partner-2.png';
+import partner3 from '../../assets/partner-3.png';
+import partner4 from '../../assets/partner-4.png';
+
+const partners = [partner1, partner2, partner3, partner4, partner1, partner2, partner3];
 
 export default function Partners() {
-  const [scrollDirection, setScrollDirection] = useState('down'); // 'down' or 'up'
+  const [scrollDirection, setScrollDirection] = useState('down');
 
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -26,33 +24,21 @@ export default function Partners() {
       }
       lastScrollY = currentScrollY;
     };
-      
-    window.addEventListener('scroll', updateScrollDirection);
 
-    return () => {
-      window.removeEventListener('scroll', updateScrollDirection);
-    };
+    window.addEventListener('scroll', updateScrollDirection);
+    return () => window.removeEventListener('scroll', updateScrollDirection);
   }, []);
 
   const repeatedLogos = [...Array(5)].flatMap(() => partners);
 
   return (
-    <section className="partners" id='partners'>
+    <section className="partners" id="partners">
       <h2 className="partners-title">Our Partners</h2>
       <div className="slider-container">
-        {/* Add a class based on scroll direction */}
-        <div
-          className={`partners-logos ${
-            scrollDirection === 'up' ? 'reverse' : ''
-          }`}
-        >
+        <div className={`partners-logos ${scrollDirection === 'up' ? 'reverse' : ''}`}>
           {repeatedLogos.map((logo, index) => (
             <div className="partner-logo" key={index}>
-              <img
-                src={`${import.meta.env.BASE_URL}src/assets/${logo}`}
-                alt={`Partner ${index + 1}`}
-                loading="lazy"
-              />
+              <img src={logo} alt={`Partner ${index + 1}`} loading="lazy" />
             </div>
           ))}
         </div>
